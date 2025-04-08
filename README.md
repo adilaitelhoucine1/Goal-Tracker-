@@ -1,3 +1,35 @@
+# Goal Tracking App
+
+A React application for tracking personal goals and visualizing progress. This goal management tool helps users create, organize, and monitor their objectives efficiently.
+
+![Goal Tracker Screenshot](https://your-screenshot-url-here.png)
+
+## Features
+
+- Create and track multiple personal and professional goals
+- Log daily progress for each goal
+- Visualize progress with interactive progress bars
+- View statistics and completion insights
+- Categorize goals for better organization
+- Store data locally for persistent usage
+
+## Project Structure
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (version 14 or newer)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository or download the source code
+   ```bash
+   git clone https://github.com/yourusername/goal.git
+   cd goal
+   ```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,85 +1,72 @@
 import React from 'react';
 
-// Category icons & colors
-const categoryConfig = {
-  steps: { icon: "👣", color: "bg-blue-600" },
-  water: { icon: "💧", color: "bg-cyan-500" },
-  workout: { icon: "🏋️‍♂️", color: "bg-purple-600" },
-  other: { icon: "🎯", color: "bg-amber-500" }
-};
-
-const GoalCard = ({ goal, progress, onDelete }) => {
-  const { icon, color } = categoryConfig[goal.category] || categoryConfig.other;
-  const progressColor = progress >= 100 ? "bg-green-500" : color;
+const GoalCard = ({ goal, onDelete }) => {
+  // Calculate progress percentage (capped at 100%)
+  const progress = Math.min(100, Math.round((goal.current / goal.target) * 100));
   
-  // Format date to display
-  const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'short', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString(undefined, options);
+  // Determine the color based on the goal category
+  let color;
+  switch(goal.category) {
+    case 'steps':
+      color = 'green';
+      break;
+    case 'distance':
+      color = 'blue';
+      break;
+    case 'weight':
+      color = 'yellow';
+      break;
+    case 'calories':
+      color = 'cyan';
+      break;
+    default:
+      color = 'indigo';
+  }
+
+  const handleDelete = () => {
+    if (window.confirm("Are you sure you want to delete this goal?")) {
+      onDelete(goal.id);
+    }
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg">
-      <div className={`h-2 ${progressColor}`}></div>
+    <div className={`bg-white rounded-2xl shadow-lg p-6 border-l-4 border-${color}-500 hover:shadow-xl transition-shadow duration-300`}>
+    
+      <div className="flex justify-between mb-3">
+        <h3 className="text-xl font-semibold text-gray-800 flex items-center">
+          {goal.title}
+        </h3>
+        <span className={`px-3 py-1 bg-${color}-100 text-${color}-800 text-sm rounded-full font-medium`}>
+          {goal.unit}
+        </span>
+      </div>
+ 
+      <div className="w-full bg-gray-200 rounded-full h-6 mb-3">
+        <div 
+          className={`bg-${color}-500 h-6 rounded-full text-center text-xs text-white font-semibold leading-6`} 
+          style={{ width: `${progress}%` }}
+        >
+          {progress}%
+        </div>
+      </div>
       
-      <div className="p-6">
-        <div className="flex justify-between items-start mb-3">
-          <div className="flex items-center">
-            <span className="text-2xl mr-3">{icon}</span>
-            <h3 className="font-bold text-xl text-gray-800 leading-tight">{goal.title}</h3>
-          </div>
-          <button 
-            onClick={onDelete}
-            className="text-gray-400 hover:text-red-500 transition-colors"
-            aria-label="Supprimer"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-            </svg>
-          </button>
-        </div>
-        
-        <div className="text-gray-600 mb-4 flex items-center space-x-4">
-          <span className="inline-flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
-            Cible: {goal.target} {goal.unit}
-          </span>
-          
-          {goal.createdAt && (
-            <span className="inline-flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              {formatDate(goal.createdAt)}
-            </span>
-          )}
-        </div>
-        
-        <div className="relative pt-1 mb-1">
-          <div className="flex items-center justify-between">
-            <div className="text-xs font-semibold inline-block text-blue-600">
-              Progression
-            </div>
-            <div className="text-xs font-semibold inline-block text-blue-600">
-              {progress}%
-            </div>
-          </div>
-          <div className="overflow-hidden h-2 mb-1 text-xs flex rounded bg-gray-200">
-            <div 
-              style={{ width: `${progress}%` }} 
-              className={`shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center ${progressColor} transition-all duration-500`}
-            ></div>
-          </div>
-        </div>
-        
-        <p className="text-sm text-gray-500">
-          {progress >= 100 
-            ? "Objectif atteint! 🎉" 
-            : `Reste ${goal.target - (goal.progress.reduce((sum, entry) => sum + entry.value, 0))} ${goal.unit} pour atteindre l'objectif`
-          }
-        </p>
+   
+      <div className="flex justify-between text-sm text-gray-600 mb-4">
+        <span className="font-medium">Target: {goal.target} {goal.unit}</span>
+        <span className="font-bold">Current: {goal.current} {goal.unit}</span>
+      </div>
+      
+   
+      <div className="flex justify-between items-center">
+        <span className="text-xs text-gray-500">
+          Created on: {goal.createdAt}
+        </span>
+        <button 
+          onClick={handleDelete}
+          className="px-4 py-1.5 text-sm bg-white border border-red-500 text-red-500 rounded-lg hover:bg-red-50 transition"
+        >
+          Delete
+        </button>
       </div>
     </div>
   );
