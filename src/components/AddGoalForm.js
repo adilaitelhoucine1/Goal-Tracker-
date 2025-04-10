@@ -1,54 +1,38 @@
 import React, { useState } from 'react';
 
 const AddGoalForm = ({ onAddGoal }) => {
- 
-  const [formData, setFormData] = useState({
-    title: '',
-    target: '',
-    unit: '',
-    category: 'steps',
-  });
+  const [title, setTitle] = useState('');
+  const [target, setTarget] = useState('');
+  const [unit, setUnit] = useState('');
+  const [category, setCategory] = useState('steps');
 
-
-
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
-
+  const handleTitleChange = (e) => setTitle(e.target.value);
+  const handleTargetChange = (e) => setTarget(e.target.value);
+  const handleUnitChange = (e) => setUnit(e.target.value);
+  const handleCategoryChange = (e) => setCategory(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
     const newGoal = {
-        id: Date.now().toString(), 
-        title: formData.title,
-        target: parseFloat(formData.target),
-        unit: formData.unit,
-        category: formData.category,
-        current: 0,
-        createdAt: new Date().toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric'
-        })
+      id: Date.now().toString(), 
+      title: title,
+      target: parseFloat(target),
+      unit: unit,
+      category: category,
+      current: 0,
+      progressHistory: [] 
     };
     
-   
     const existingGoals = JSON.parse(localStorage.getItem('goals')) || [];
     localStorage.setItem('goals', JSON.stringify([...existingGoals, newGoal]));
 
-
-    setFormData({
-      title: '',
-      target: '',
-      unit: '',
-      category: 'steps',
-    });
+    setTitle('');
+    setTarget('');
+    setUnit('');
+    setCategory('steps');
+    
+  
   };
 
   return (
@@ -57,10 +41,7 @@ const AddGoalForm = ({ onAddGoal }) => {
         Add New Goal
       </h3>
       
- 
-      
       <form onSubmit={handleSubmit}>
-        
         <div className="mb-5">
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Goal Title:
@@ -68,8 +49,8 @@ const AddGoalForm = ({ onAddGoal }) => {
           <input
             type="text"
             name="title"
-            value={formData.title}
-            onChange={handleChange}
+            value={title}
+            onChange={handleTitleChange}
             className="w-full py-3 px-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             placeholder="Enter goal title"
           />
@@ -82,8 +63,8 @@ const AddGoalForm = ({ onAddGoal }) => {
           <input
             type="number"
             name="target"
-            value={formData.target}
-            onChange={handleChange}
+            value={target}
+            onChange={handleTargetChange}
             className="w-full py-3 px-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             placeholder="Enter target value"
             step="0.01"
@@ -91,7 +72,6 @@ const AddGoalForm = ({ onAddGoal }) => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-     
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Unit:
@@ -99,22 +79,21 @@ const AddGoalForm = ({ onAddGoal }) => {
             <input
               type="text"
               name="unit"
-              value={formData.unit}
-              onChange={handleChange}
+              value={unit}
+              onChange={handleUnitChange}
               className="w-full py-3 px-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder="e.g., steps, km, kg"
             />
           </div>
           
- 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Category:
             </label>
             <select
               name="category"
-              value={formData.category}
-              onChange={handleChange}
+              value={category}
+              onChange={handleCategoryChange}
               className="w-full py-3 px-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
             >
               <option value="steps">Steps</option>

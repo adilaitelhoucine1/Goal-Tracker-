@@ -1,102 +1,70 @@
-# Goal Tracking App
+# 🏋️‍♀️ Fitness Goal Tracker 🥗
 
-A React application for tracking personal goals and visualizing progress. This goal management tool helps users create, organize, and monitor their objectives efficiently.
+Bienvenue dans **Fitness Goal Tracker**, une application web intuitive qui vous aide à **définir**, **suivre** et **atteindre** vos objectifs de fitness, que ce soit   marcher 🥾, s'entraîner 💪 ou boire de l'eau 💧. Parfaitement adaptée aux débutants en React, cette app met en pratique les bases des frameworks frontend modernes avec un stockage **100% local**.
 
-![Goal Tracker Screenshot](https://your-screenshot-url-here.png)
+Ce projet est une application web développée avec [**Next.js**](https://nextjs.org), initialisée via [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). Il vous aide à suivre vos objectifs de fitness 🏃, enregistrer vos progrès quotidiens 📊 et rester motivé(e) jour après jour !
 
-## Features
+## ⚙️ Lancer le Projet en Local
 
-- Create and track multiple personal and professional goals
-- Log daily progress for each goal
-- Visualize progress with interactive progress bars
-- View statistics and completion insights
-- Categorize goals for better organization
-- Store data locally for persistent usage
+```bash
+npm run dev
+# ou
+yarn dev
+# ou
+pnpm dev
+# ou
+bun dev
+```
 
-## Project Structure
+Ensuite, ouvrez votre navigateur à l’adresse 👉 [http://localhost:3000](http://localhost:3000)
 
-## Getting Started
+## 🧩 Fonctionnalités
 
-### Prerequisites
+| Fonctionnalité 📌                     | Description 📋                                                                 |
+|--------------------------------------|--------------------------------------------------------------------------------|
+| ✅ **Gestion des Objectifs**         | Créer, Lire, Mettre à jour et Supprimer vos objectifs de fitness              |
+| 📅 **Saisie des Progrès Quotidiens** | Un formulaire simple pour enregistrer votre progression chaque jour           |
+| 📋 **Liste des Objectifs**           | Une vue claire de tous vos objectifs avec indicateur visuel de progression    |
+| 📊 **Résumé des Performances**       | Statistiques hebdomadaires et moyennes de progression                         |
+| 💾 **Stockage Local**                | Toutes les données sont sauvegardées dans le navigateur, même après fermeture |
 
-- Node.js (version 14 or newer)
-- npm or yarn
+## ✍️ Structure du Projet
 
-### Installation
+- `app/page.js` – Page d’accueil de votre application.
+- `components/` – Vos composants React réutilisables.
+- `styles/` – Fichiers CSS ou modules CSS.
+- `utils/` – Fonctions utilitaires (ex: LocalStorage).
 
-1. Clone the repository or download the source code
-   ```bash
-   git clone https://github.com/yourusername/goal.git
-   cd goal
-   ```
 
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🛠️ Technologies Utilisées
 
-## Available Scripts
+| Outil / Librairie | Rôle                               |
+|-------------------|------------------------------------|
+| React             | Framework principal de l’application |
+| JavaScript (ES6+) | Logique & Interactivité             |
+| HTML / CSS        | Structure & Design                  |
+| LocalStorage      | Persistance des données             |
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🧠 Pour les Étudiants
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Ce projet a été conçu comme un **exercice pratique** pour :
+- Apprendre les bases de React (useState, useEffect, composants)
+- Comprendre la gestion de données sans backend
+- Créer une expérience utilisateur fluide et minimaliste
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Déploiement avec  
 
-### `npm test`
+Déployez facilement sur [**Vercel**](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) :
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Plateforme 🌐    | Statut ✅         |
+|------------------|------------------|
+| Vercel           | ✔️ Recommandée   |
+| Netlify          | ✔️ Compatible    |
+| GitHub Pages     | ⚠️ Non recommandé pour Next.js (préférez un framework statique) |
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```

@@ -15,13 +15,11 @@ function App() {
     inProgress: 0
   });
 
-  // Load goals from localStorage on initial render
   useEffect(() => {
     const savedGoals = JSON.parse(localStorage.getItem('goals')) || [];
     setGoals(savedGoals);
   }, []);
 
-  // Update stats whenever goals change
   useEffect(() => {
     const completed = goals.filter(goal => goal.current >= goal.target).length;
     setStats({
