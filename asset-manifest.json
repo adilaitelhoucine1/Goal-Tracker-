@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Goal-Tracker-Project/static/css/main.f8a0898f.css",
+    "main.js": "/Goal-Tracker-Project/static/js/main.d9cecd24.js",
+    "static/js/453.75a41e88.chunk.js": "/Goal-Tracker-Project/static/js/453.75a41e88.chunk.js",
+    "index.html": "/Goal-Tracker-Project/index.html",
+    "main.f8a0898f.css.map": "/Goal-Tracker-Project/static/css/main.f8a0898f.css.map",
+    "main.d9cecd24.js.map": "/Goal-Tracker-Project/static/js/main.d9cecd24.js.map",
+    "453.75a41e88.chunk.js.map": "/Goal-Tracker-Project/static/js/453.75a41e88.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f8a0898f.css",
+    "static/js/main.d9cecd24.js"
+  ]
+}
